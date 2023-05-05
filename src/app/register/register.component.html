@@ -1,0 +1,22 @@
+<h2 class="text-center text-primary p-3">{{welcomeData}}</h2>
+<div class="container w-75 text-center mt-3">
+    <h1>Register Form</h1>
+    <form class="border bg-info p-5" style="border-radius: 20px;" action="">
+        <div class="p-2 mt-2">
+            <input class="form-control mt-3" type="text" id="accNumber" placeholder="account number">
+        </div>
+        <div class="p-2 mt-2">
+            <input class="form-control mt-3" type="text" id="userName" placeholder="username">
+        </div>
+        <div class="p-2 mt-2">
+            <input class="form-control mt-3" type="password" id="passwd" placeholder="password">
+        </div>
+        <div>
+            <button onclick="register()" class="btn btn-success mt-3" type="button">Register</button>
+        </div>
+    </form>
+</div>
+<div class="container text-center bg-warning mt-3 p-3 w-75" style="border-radius: 20px;">
+    <h3>Already have an account, Login!</h3>
+    <button class="btn btn-primary" routerLink="">Login</button>
+</div>

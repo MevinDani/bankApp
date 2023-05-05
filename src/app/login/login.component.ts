@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../service/data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +10,7 @@ import { DataService } from '../service/data.service';
 
 export class LoginComponent implements OnInit {
 
-  constructor(private ds:DataService) {}
+  constructor(private route:Router) {}
 
   ngOnInit(): void {}
 
@@ -21,8 +22,7 @@ export class LoginComponent implements OnInit {
 
   login() {
     console.log(this.uname,this.psw);
-    alert(this.ds.checkData())
-    
+    this.route.navigateByUrl('home')
   }
 
   signUp() {
