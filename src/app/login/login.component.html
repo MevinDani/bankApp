@@ -1,17 +1,23 @@
 <h2 class="text-center text-primary p-3">{{welcomeData}}</h2>
 <div class="container w-75 text-center mt-3">
     <h1>Login Form</h1>
-    <form class="border p-5 bg-info" action="" style="border-radius: 20px;">
+    <form [formGroup]="loginForm" (ngSubmit)="login()" class="border p-5 bg-info" style="border-radius: 20px;">
         <div class="p-2 mt-2">
-            <input [(ngModel)]="uname" class="form-control mt-3" type="text" id="accNumber"
-                [placeholder]="placeHolderData" name="accNo" required>
+            <input formControlName="acno" class="form-control mt-3" type="text" id="accNumber"
+                placeholder="account number" name="accNo">
+        </div>
+        <div *ngIf="(this.loginForm.get('acno')?.errors)&&(this.loginForm.get('acno')?.touched)">
+            <p class="text-danger">Account number must be a number</p>
         </div>
         <div class="p-2 mt-2">
-            <input [(ngModel)]="psw" class="form-control mt-3" type="password" id="passwd" placeholder="Password"
-                name="passwd" required>
+            <input formControlName="psw" class=" form-control mt-3" type="password" id="passwd" placeholder="password"
+                name="pswd">
+        </div>
+        <div *ngIf="(this.loginForm.get('psw')?.errors)&&(this.loginForm.get('psw')?.touched)">
+            <p class="text-danger">Invalid Password</p>
         </div>
         <div>
-            <button (click)="login()" class="btn btn-success mt-3" type="button">Login</button>
+            <button class="btn btn-success mt-3" type="submit">Login</button>
         </div>
     </form>
 </div>

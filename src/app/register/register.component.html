@@ -1,19 +1,38 @@
 <h2 class="text-center text-primary p-3">{{welcomeData}}</h2>
 <div class="container w-75 text-center mt-3">
     <h1>Register Form</h1>
-    <form (ngSubmit)="register()" class="border bg-info p-5" style="border-radius: 20px;" action="">
+    <form [formGroup]="registerForm" (ngSubmit)="register()" class="border bg-info p-5" style="border-radius: 20px;">
         <div class="p-2 mt-2">
-            <input class="form-control mt-3" type="text" id="accNumber" placeholder="account number" name="accNum"
-                [(ngModel)]="accNum">
+            <input formControlName="acno" class="form-control mt-3" type="text" id="accNumber"
+                placeholder="account number" name="accNo">
+        </div>
+        <div *ngIf="(this.registerForm.get('acno')?.errors)&&(this.registerForm.get('acno')?.touched)">
+            <p class="text-danger">Account number must be a number</p>
         </div>
         <div class="p-2 mt-2">
-            <input class="form-control mt-3" type="text" id="userName" placeholder="username" name="uname"
-                [(ngModel)]="uname">
+            <input formControlName="uname" class="form-control mt-3" type="text" id="userName" placeholder="username"
+                name="uname">
+        </div>
+        <div *ngIf="(this.registerForm.get('uname')?.errors)&&(this.registerForm.get('uname')?.touched)">
+            <p class="text-danger">Invalid Username</p>
         </div>
         <div class="p-2 mt-2">
-            <input class="form-control mt-3" type="password" id="passwd" placeholder="password" name="passwd"
-                [(ngModel)]="passwd">
+            <input formControlName="psw" class="form-control mt-3" type="password" id="passwd" placeholder="password"
+                name="pswd">
         </div>
+        <div *ngIf="(this.registerForm.get('psw')?.errors)&&(this.registerForm.get('psw')?.touched)">
+            <p class="text-danger">Invalid Password</p>
+        </div>
+        <div class="p-2 mt-2">
+            <input formControlName="cpsw" class="form-control mt-3" type="password" id="cpasswd"
+                placeholder="confirm password" name="cpswd">
+        </div>
+        <div *ngIf="pswCheck">
+            <p class="text-danger">Passwords doesnt match</p>
+        </div>
+        <!-- <div *ngIf="(this.registerForm.get('cpsw')?.errors)&&(this.registerForm.get('cpsw')?.touched)">
+            <p class="text-danger">Invalid Password</p>
+        </div> -->
         <div>
             <button class="btn btn-success mt-3" type="submit">Register</button>
         </div>
